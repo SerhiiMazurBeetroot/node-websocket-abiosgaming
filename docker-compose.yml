@@ -1,0 +1,23 @@
+version: '3.8'
+services: 
+
+  websocket:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    container_name: websocket
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes: 
+      - /app/node_modules
+      - ./:/app 
+    networks:
+      - websocket-network
+
+volumes: 
+  my_data:
+
+networks:
+  websocket-network:
+    driver: bridge
